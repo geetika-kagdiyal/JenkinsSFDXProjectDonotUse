@@ -5,6 +5,7 @@ node {
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTIALS_ID=env.SERVER_KEY_CREDENTIALS_ID
+    def DEPLOYDIR='.'
     
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://test.salesforce.com"
@@ -12,7 +13,14 @@ node {
 
     def toolbelt = tool 'toolbelt'
 
-
+    stage('Clean Workspace') {
+        try {
+            deleteDir()
+        }
+        catch (Exception e) {
+            println('Unable to Clean WorkSpace.')
+        }
+    }
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
@@ -46,17 +54,23 @@ node {
 		// Deploy metadata and execute unit tests.
 		// -------------------------------------------------------------------------
 		stage('Install sfpowerkit'){
-		   bat 'C:\\Users\\geetikakagdiyal\\Salesforce\\June2021\\GitHub Repos\\MyPersonalDevOrg\\sfpowerkit.bat'
+		   //bat 'start cmd.exe /c C:\\Users\\geetikakagdiyal\\Salesforce\\June2021\\GitHub Repos\\MyPersonalDevOrg\\sfpowerkit.bat'
+		     //bat 'call C:\Users\geetikakagdiyal\Salesforce\June2021\GitHub Repos\MyPersonalDevOrg\sfpowerkit.bat'
+			//cd C:\Users\geetikakagdiyal\Salesforce\June2021\GitHub Repos\MyPersonalDevOrg
+			bat 'sfpowerkit.bat'
 		}
 		
 		stage('Delta changes'){
-		   bat ' mkdir config'
+		   //bat ' mkdir config'
 		   bat 'sfdx sfpowerkit:project:diff --revisionfrom d59590465bb02c20527ab81c1825774cbe2e9f5d --revisionto 56d0bf9961f19febdfc6b6f774824a828aa8eb99 --output config'
 	    }
 
 			    
 		stage('Deploy and Run Tests') {
-		    rc = command "${toolbelt}/sfdx force:mdapi:deploy --wait 10 -d config/. --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    //rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    //rc = command "${toolbelt}/sfdx force:source:deploy -l RunLocalTests -c -d ./config --targetusername SFDX -w 10
+			
 		    if (rc != 0) {
 			error 'Salesforce deploy and test run failed.'
 		    }
@@ -68,7 +82,8 @@ node {
 		// -------------------------------------------------------------------------
 
 		stage('Check Only Deploy') {
-		    rc = command "${toolbelt}/sfdx force:mdapi:deploy --checkonly --wait 10 -d config/. --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    //rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		      rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    if (rc != 0) {
 		        error 'Salesforce deploy failed.'
 		   }
