@@ -1,0 +1,30 @@
+[
+  {
+    "action": "Deploy",
+    "metadataType": "CustomField",
+    "componentName": "Drink_Order__c.FlavorGeetika__c",
+    "message": "",
+    "path": "config\\force-app\\main\\default\\objects\\Drink_Order__c\\fields\\FlavorGeetika__c.field-meta.xml"
+  },
+  {
+    "action": "Deploy",
+    "metadataType": "CustomField",
+    "componentName": "Drink_Order__c.Price__c",
+    "message": "",
+    "path": "config\\force-app\\main\\default\\objects\\Drink_Order__c\\fields\\Price__c.field-meta.xml"
+  },
+  {
+    "action": "Deploy",
+    "metadataType": "Layout",
+    "componentName": "Account_MyCustomField__mdt-Account MyCustomField Layout",
+    "message": "",
+    "path": "config\\force-app\\main\\default\\layouts\\Account_MyCustomField__mdt-Account MyCustomField Layout.layout-meta.xml"
+  },
+  {
+    "action": "Deploy",
+    "metadataType": "Profile",
+    "componentName": "Admin",
+    "message": "",
+    "path": "config\\force-app\\main\\default\\profiles\\Admin.profile-meta.xml"
+  }
+]
