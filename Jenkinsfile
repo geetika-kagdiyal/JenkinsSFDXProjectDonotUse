@@ -60,7 +60,8 @@ node {
 
 			    
 		stage('Deploy and Run Tests') {
-		    rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sfdx force:mdapi:deploy --deploydir ${DEPLOYDIR} --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    //rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    //rc = command "${toolbelt}/sfdx force:source:deploy -l RunLocalTests -c -d ./config --targetusername SFDX -w 10
 			
 		    if (rc != 0) {
