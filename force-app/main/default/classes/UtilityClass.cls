@@ -1,6 +1,7 @@
 public inherited sharing class UtilityClass {
 
      // SFDX youtube tutorial - enabled auto deploy -- edited online
+     // sfdx
 
      public static List<sObject> queryObjects(String theObject, List<String> theFields, List<String> theFilters, String sortField, String sortOrder) {
           String theQuery = 'SELECT ' + string.join(theFields, ',');
