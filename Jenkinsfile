@@ -5,6 +5,7 @@ node {
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTIALS_ID=env.SERVER_KEY_CREDENTIALS_ID
+    def deploydir=config
     
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://test.salesforce.com"
@@ -59,7 +60,7 @@ node {
 
 			    
 		stage('Deploy and Run Tests') {
-		    rc = command "${toolbelt}/sfdx force:source:deploy -d ./config --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sfdx force:source:deploy --deploydir=config --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    //rc = command "${toolbelt}/sfdx force:source:deploy -l RunLocalTests -c -d ./config --targetusername SFDX -w 10
 			
 		    if (rc != 0) {
@@ -73,7 +74,7 @@ node {
 		// -------------------------------------------------------------------------
 
 		stage('Check Only Deploy') {
-		    rc = command "${toolbelt}/sfdx force:source:deploy --checkonly --wait 10 -d ./config --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sfdx force:source:deploy --deploydir=config --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    if (rc != 0) {
 		        error 'Salesforce deploy failed.'
 		   }
