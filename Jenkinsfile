@@ -50,7 +50,8 @@ node {
 		}
 		
 		stage('Delta changes'){
-		   bat 'sfdx sfpowerkit:project:diff --revisionfrom 8b7e57a307b2a2a1bd4bb6539f7049c3bdca3349 --revisionto 3b0d834bcb77f3cd88504fbe4307313e26bb599e --output config'
+		   bat ' mkdir config'
+		   bat 'sfdx sfpowerkit:project:diff --revisionfrom d59590465bb02c20527ab81c1825774cbe2e9f5d --revisionto 56d0bf9961f19febdfc6b6f774824a828aa8eb99 --output config'
 	    }
 
 			    
