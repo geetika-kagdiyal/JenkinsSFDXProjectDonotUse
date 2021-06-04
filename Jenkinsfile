@@ -62,7 +62,7 @@ node {
 		
 		stage('Delta changes'){
 		   //bat ' mkdir config'
-		   bat 'sfdx sfpowerkit:project:diff --revisionfrom d59590465bb02c20527ab81c1825774cbe2e9f5d --revisionto 56d0bf9961f19febdfc6b6f774824a828aa8eb99 --output config'
+		   bat 'sfdx sfpowerkit:project:diff --revisionfrom 2894903872541e752f277c3be74a5ec560ca4b31 --revisionto 5baec5ec4bb213ff615946d21ca108cd3c8ea965 --output config'
 	    }
 
 			    
