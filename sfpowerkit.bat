@@ -1,0 +1,1 @@
+sfdx plugins:install sfpowerkit
