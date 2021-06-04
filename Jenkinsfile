@@ -13,7 +13,14 @@ node {
 
     def toolbelt = tool 'toolbelt'
 
-
+    stage('Clean Workspace') {
+        try {
+            deleteDir()
+        }
+        catch (Exception e) {
+            println('Unable to Clean WorkSpace.')
+        }
+    }
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
