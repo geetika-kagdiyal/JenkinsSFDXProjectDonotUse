@@ -1,2 +1,1 @@
-echo 'y' | sfdx plugins:install sfpowerkit
-echo "Hello"
+sfdx plugins:install sfpowerkit
