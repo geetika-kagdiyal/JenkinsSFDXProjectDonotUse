@@ -46,7 +46,7 @@ node {
 		// Deploy metadata and execute unit tests.
 		// -------------------------------------------------------------------------
 		stage('Install sfpowerkit'){
-		   bat 'C:\\Users\\geetikakagdiyal\\Salesforce\\June2021\\GitHub Repos\\MyPersonalDevOrg\\sfpowerkit.bat'
+		   bat 'start cmd.exe /c C:\\Users\\geetikakagdiyal\\Salesforce\\June2021\\GitHub Repos\\MyPersonalDevOrg\\sfpowerkit.bat'
 		}
 		
 		stage('Delta changes'){
