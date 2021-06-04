@@ -47,7 +47,9 @@ node {
 		// -------------------------------------------------------------------------
 		stage('Install sfpowerkit'){
 		   //bat 'start cmd.exe /c C:\\Users\\geetikakagdiyal\\Salesforce\\June2021\\GitHub Repos\\MyPersonalDevOrg\\sfpowerkit.bat'
-		     bat 'call C:\Users\geetikakagdiyal\Salesforce\June2021\GitHub Repos\MyPersonalDevOrg\sfpowerkit.bat'
+		     //bat 'call C:\Users\geetikakagdiyal\Salesforce\June2021\GitHub Repos\MyPersonalDevOrg\sfpowerkit.bat'
+			cd C:\Users\geetikakagdiyal\Salesforce\June2021\GitHub Repos\MyPersonalDevOrg
+			call sfpowerkit.bat
 		}
 		
 		stage('Delta changes'){
