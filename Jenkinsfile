@@ -59,7 +59,8 @@ node {
 
 			    
 		stage('Deploy and Run Tests') {
-		    rc = command "${toolbelt}/sfdx force:mdapi:deploy --wait 10 -d config/. --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sfdx force:mdapi:deploy --deploydir=config --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+			
 		    if (rc != 0) {
 			error 'Salesforce deploy and test run failed.'
 		    }
