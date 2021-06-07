@@ -3,7 +3,7 @@
     <fullName>Equipment__c</fullName>
     <deleteConstraint>SetNull</deleteConstraint>
     <externalId>false</externalId>
-    <label>Equipment</label>
+    <label>Equipment Jenkins</label>
     <lookupFilter>
         <active>true</active>
         <errorMessage>No spare parts meet this description or name.</errorMessage>

@@ -4,7 +4,7 @@
         <customLabel>false</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
-        <label>Description</label>
+        <label>Description Jenkins</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
