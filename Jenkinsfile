@@ -6,8 +6,8 @@ node {
     def SF_USERNAME=env.SF_USERNAME
     def SERVER_KEY_CREDENTIALS_ID=env.SERVER_KEY_CREDENTIALS_ID
     def DEPLOYDIR='.'
-    def PreviousCommitId
-    def LatestCommitId
+    //def PreviousCommitId
+    //def LatestCommitId
     
     def TEST_LEVEL='RunLocalTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://test.salesforce.com"
