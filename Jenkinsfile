@@ -7,7 +7,8 @@ node {
     def SERVER_KEY_CREDENTIALS_ID=env.SERVER_KEY_CREDENTIALS_ID
     def DEPLOYDIR='.'
     
-    def TEST_LEVEL='RunLocalTests'
+    //def TEST_LEVEL='RunLocalTests'
+    def TEST_LEVEL='RunSpecifiedTests'
     def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://test.salesforce.com"
 
 
@@ -70,7 +71,7 @@ node {
 	   // -------------------------------------------------------------------------
 
 		stage('Check Only Deploy') {
-			rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL} -r BatchLeadConvertTest,InstallationTests --verbose --loglevel fatal "
+			rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL} -r BatchLeadConvertTest,InstallationTests --verbose --loglevel fatal"
 		    //rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		      //rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    if (rc != 0) {
@@ -82,7 +83,7 @@ node {
 		// -------------------------------------------------------------------------
 			    
 		stage('Deploy and Run Tests') {
-		    rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		    rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL} -r BatchLeadConvertTest,InstallationTests --verbose --loglevel fatal"
 		    //rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    //rc = command "${toolbelt}/sfdx force:source:deploy -l RunLocalTests -c -d ./config --targetusername SFDX -w 10
 			
