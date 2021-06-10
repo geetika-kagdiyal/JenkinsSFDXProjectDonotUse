@@ -70,8 +70,9 @@ node {
 	   // -------------------------------------------------------------------------
 
 		stage('Check Only Deploy') {
+			rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL} -r BatchLeadConvertTest,InstallationTests --verbose --loglevel fatal "
 		    //rc = command "${toolbelt}/sfdx force:source:deploy --deploydir ${DEPLOYDIR} --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
-		      rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
+		      //rc = command "${toolbelt}/sfdx force:source:deploy -p config/force-app --checkonly --wait 10 --targetusername SFDX --testlevel ${TEST_LEVEL}"
 		    if (rc != 0) {
 		        error 'Salesforce deploy failed.'
 		   }
